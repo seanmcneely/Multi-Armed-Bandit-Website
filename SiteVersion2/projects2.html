@@ -1,0 +1,227 @@
+!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Sean's Projects</title>
+<meta
+    name="description"
+    content="Sean McNeely, projects, blog and stuff."
+    />
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link href="https://fonts.googleapis.com/css?family=Rubik&display=swap" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.0.0/p5.js"></script>
+    <script defer src=https://cdn.JsDelivr.net/npm/p5/lib/addons/p5.dom.min.js></script>
+	<script defer src=https://cdn.JsDelivr.net/npm/p5/lib/addons/p5.sound.min.js></script>
+    <link rel="stylesheet" href="styleAlt.css"/>
+    <script src = "filter.js"></script>
+    <script src = "asyncReward.js"></script>
+  </head>
+  <body>
+  	<nav class="navbar navbar-expand navmenu justify-content-between navbar-dark mr-auto">
+  		<a class="navbar-brand" href="index2.html">
+    		<img id="logo" src="logoAlt.png" width="30%" style = "margin-left:5%" alt="Sean's Logo">
+  		</a>
+  		<button class="navbar-toggler ml-auto" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
+    		<span class="navbar-toggler-icon"></span>
+  		</button>
+  		 <div class="collapse navbar-collapse" id="collapsibleNavbar" >
+    		<ul class="navbar-nav ml-auto" style = "margin-right:5%; font-family: 'Rubik', sans-serif;">
+      			<li class="nav-item">
+        			<a class="nav-link" href="projects2.html" style="color:white;">Projects</a>
+      			</li>
+      			<li class="nav-item">
+        			<a class="nav-link" href="https://github.com/seanmcneely/Blog" style="color:white;">Blog</a>
+      			</li>
+      			<li class="nav-item">
+        			<a class="nav-link" href="https://github.com/seanmcneely" style="color:white;">GitHub</a>
+      			</li>
+      			<li class="nav-item">
+        			<a class="nav-link" href="Rewarder?rewardType=CONTACT&version=2" style="color:white;">Contact</a>
+      			</li>
+    		</ul>
+    	</div>
+    </nav>
+  	<div id="aboutme">
+		<h2 style="margin-top:3%; text-align: center;">
+			Check out some selected projects:
+		</h2>
+	</div>
+	<div id="projectButtons">
+		<button type="button" class="btn btn-primary filterProjects" id="moreButton" data-toggle="modal" onclick="filterSelection('ML')">
+  					Data Science / ML
+		</button>
+		<button type="button" class="btn btn-primary filterProjects" id="moreButton" data-toggle="modal" onclick="filterSelection('SWE')">
+  					Software Engineering
+		</button>
+		<button type="button" class="btn btn-primary filterProjects" id="moreButton" data-toggle="modal" onclick="filterSelection('all')">
+  					All
+		</button>
+	</div>
+	
+	<div class="card-columns" id="projectCards">
+		<div class="card filterDiv SWE">
+	  		<img class="card-img-top" id="projectImage" src="saleats.png">
+	  		<div class="card-body">
+	    		<h5 class="card-title">SalEats</h5>
+	    		<p class="card-text">An explanation of the project goes here :)</p>
+	    		<button type="button" class="btn btn-primary" id="moreButton" data-toggle="modal" data-target="#exampleModalLong" onclick="recordMoreClick()">
+  					More
+				</button>
+	  		</div>
+		</div>
+		<div class="card filterDiv SWE">
+	  		<img class="card-img-top" id="projectImage" src="ferret.png" >
+	  		<div class="card-body">
+	    		<h5 class="card-title">Music Ferret</h5>
+	    		<p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+	    		<button type="button" class="btn btn-primary" id="moreButton" data-toggle="modal" data-target="#exampleModalLong">
+  					More
+				</button>
+	  		</div>
+		</div>
+		<div class="card filterDiv ML">
+	  		<img class="card-img-top" id="projectImage" src="timeSeries.png">
+	  		<div class="card-body">
+	    		<h5 class="card-title">Predict Future Sales Machine Learning Competition</h5>
+	    		<p class="card-text">An explanation of the project goes here :)</p>
+	    		<button type="button" class="btn btn-primary" id="moreButton" data-toggle="modal" data-target="#exampleModalLong">
+  					More
+				</button>
+	  		</div>
+		</div>
+		<div class="card filterDiv ML">
+	  		<img class="card-img-top" id="projectImage" src="spiro.png" >
+	  		<div class="card-body">
+	    		<h5 class="card-title">Spatial Data Queries of USC Campus with PostGIS</h5>
+	    		<p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+	    		<button type="button" class="btn btn-primary" id="moreButton" data-toggle="modal" data-target="#exampleModalLong">
+  					More
+				</button>
+	  		</div>
+		</div>
+		<div class="card filterDiv ML">
+	  		<img class="card-img-top" id="projectImage" src="">
+	  		<div class="card-body">
+	    		<h5 class="card-title">Machine Learning Analysis of Psilocybin EEG</h5>
+	    		<p class="card-text">An explanation of the project goes here :)</p>
+	    		<button type="button" class="btn btn-primary" id="moreButton" data-toggle="modal" data-target="#exampleModalLong">
+  					More
+				</button>
+	  		</div>
+		</div>
+		<div class="card filterDiv SWE">
+	  		<img class="card-img-top" id="projectImage" src="" >
+	  		<div class="card-body">
+	    		<h5 class="card-title">Multi-Threaded Networking Food Delivery Application</h5>
+	    		<p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+	    		<button type="button" class="btn btn-primary" id="moreButton" data-toggle="modal" data-target="#exampleModalLong">
+  					More
+				</button>
+	  		</div>
+		</div>
+		<div class="card filterDiv ML SWE">
+	  		<img class="card-img-top" id="projectImage" src="perceptron.png">
+	  		<div class="card-body">
+	    		<h5 class="card-title">Python Perceptron</h5>
+	    		<p class="card-text">An explanation of the project goes here :)</p>
+	    		<button type="button" class="btn btn-primary" id="moreButton" data-toggle="modal" data-target="#exampleModalLong">
+  					More
+				</button>
+	  		</div>
+		</div>
+		<div class="card filterDiv ML">
+	  		<img class="card-img-top" id="projectImage" src="..." >
+	  		<div class="card-body">
+	    		<h5 class="card-title">Voice Cloning with Deep Learning</h5>
+	    		<p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+	    		<button type="button" class="btn btn-primary" id="moreButton" data-toggle="modal" data-target="#exampleModalLong">
+  					More
+				</button>
+	  		</div>
+		</div>
+		<div class="card filterDiv ML SWE">
+	  		<img class="card-img-top" id="projectImage" src="palm.png">
+	  		<div class="card-body">
+	    		<h5 class="card-title">Personal Website</h5>
+	    		<p class="card-text">An explanation of the project goes here :)</p>
+	    		<button type="button" class="btn btn-primary" id="moreButton" data-toggle="modal" data-target="#exampleModalLong">
+  					More
+				</button>
+	  		</div>
+		</div>
+		<div class="card filterDiv SWE">
+	  		<img class="card-img-top" id="projectImage" src="parseTree.png">
+	  		<div class="card-body">
+	    		<h5 class="card-title">C++ BASIC Interpreter</h5>
+	    		<p class="card-text">An explanation of the project goes here :)</p>
+	    		<button type="button" class="btn btn-primary" id="moreButton" data-toggle="modal" data-target="#exampleModalLong">
+  					More
+				</button>
+	  		</div>
+		</div>
+		<div class="card filterDiv">
+	  		<img class="card-img-top" id="projectImage" src="" >
+	  		<div class="card-body">
+	    		<h5 class="card-title">IntuiStride</h5>
+	    		<p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+	    		<button type="button" class="btn btn-primary" id="moreButton" data-toggle="modal" data-target="#exampleModalLong">
+  					More
+				</button>
+	  		</div>
+		</div>
+		<div class="card filterDiv SWE">
+	  		<img class="card-img-top" id="projectImage" src="..." >
+	  		<div class="card-body">
+	    		<h5 class="card-title">C++ Balanced Binary Search Trees</h5>
+	    		<p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+	    		<button type="button" class="btn btn-primary" id="moreButton" data-toggle="modal" data-target="#exampleModalLong">
+  					More
+				</button>
+	  		</div>
+		</div>
+		<div class="card filterDiv SWE">
+	  		<img class="card-img-top" id="projectImage" src="" >
+	  		<div class="card-body">
+	    		<h5 class="card-title">C++ Random Walk PageRank Calculator</h5>
+	    		<p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+	    		<button type="button" class="btn btn-primary" id="moreButton" data-toggle="modal" data-target="#exampleModalLong">
+  					More
+				</button>
+	  		</div>
+		</div>
+	</div>
+
+	<!-- Modal -->
+	<div class="modal fade" id="exampleModalLong" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
+	  <div class="modal-dialog" role="document">
+	    <div class="modal-content">
+	      <div class="modal-header">
+	        <h5 class="modal-title" id="exampleModalLongTitle">Modal title</h5>
+	        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+	          <span aria-hidden="true">&times;</span>
+	        </button>
+	      </div>
+	      <div class="modal-body">
+	       This is content. It is very very long 
+	       
+	       hi
+	       
+	       hello
+	       
+	       hafkagajfga
+	       agsfahafdhgad
+	      </div>
+	      <div class="modal-footer">
+	        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+	        <button type="button" class="btn btn-primary" id="moreButton">Save changes</button>
+	      </div>
+	    </div>
+	  </div>
+	</div>
+	
+	<script src="//localhost:8290/divolte.js" defer async></script>
+	<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>	
+</body>
+</html>
