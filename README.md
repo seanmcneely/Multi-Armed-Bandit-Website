@@ -37,5 +37,16 @@ Once the user clicks on this link, the Rewarder servlet takes care of the rest. 
 
 In contrast, you may want to reward some action that does not take the user to a new page. For example, maybe you want to reward the page for a user interacting with a button that runs some javascript code. To reward the page without redirecting the user to another page, you can use the rewardAction('rewardType') javascript function. This function is implemented in asyncReward.js, and sends an XmlHttpRequest to the Rewarder servlet. All you need to fill in here is the 'rewardType' parameter, which will be used by the rewarder servlet to determine how much to reward the page for this action. 
 
+### Serving Pages Using Bandit Algorithms: The Bandit Class
+While the Rewarder servlet is responsible for rewarding pages for user actions, the Bandit class uses this information to decide which version of your website to serve new users. If you have three versions of your website to test, you should have three home pages, index1.html, index2.html, and index3.html. Bandit decides which of these pages to serve using either the epsilon greedy or upper confidence bound algorithm. To this servlet to your website's context root, you should add a servlet mapping in your web.xml that maps Bandit to the empty string: 
 
+  <servlet>
+		<servlet-name>Bandit</servlet-name>
+		<servlet-class>Bandit</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>Bandit</servlet-name>
+		<url-pattern></url-pattern>
+  </servlet-mapping>
+  
 
