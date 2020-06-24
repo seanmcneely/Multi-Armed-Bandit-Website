@@ -24,4 +24,18 @@ There are two types of actions in this framework, actions that require a redirec
 The Rewards class just held information about what rewards we have, how much they are worth, where they redirect, and how many site versions we have. The Rewarder class does all the work. Luckily, you don't have to touch anything here! Just by editing the Rewards class, the Rewarder knows how to use this information to reward your website versions for soliciting actions from users. 
 
 ### Putting Reward Actions on Your Page
-As mentioned before, there are two types of actions, those that redirect and those that don't. Putting actions on your webpage is different if you are linking directly to the Rewarder servlet or running the Rewarder servlet in the background with XMLHttpRequest.
+As mentioned before, there are two types of actions, those that redirect and those that don't. Putting actions on your webpage is different if you are linking directly to the Rewarder servlet or running the Rewarder servlet in the background with XMLHttpRequest. If you want to reward users following a link, you should replace the link in your page with a link to the Rewarder servlet with parameters rewardType and version. The rewardType parameter tells the Rewarder sevlet what type of action is occuring and where to redirect the user. Recall that this information is stored in the Rewards class. The parameter used for rewardType should be the same as the reward string ID in the Rewards class. 
+
+For example, to reward version 1 of my site for a user following a link to my contact1.html page, I replace any links on my page with a link to my servlet with the correct parameters:
+
+
+href="Rewarder?rewardType=CONTACT&version=1"
+
+
+Once the user clicks on this link, the Rewarder servlet takes care of the rest. It grants version 1 of the page some reward, and redirects to contact1.html. It is important to make sure the version parameter in your links correspond to the version of your website in which the link is located. This ensures the correct version of the page is rewarded, and the user is redirected to the correct page version. 
+
+
+In contrast, you may want to reward some action that does not take the user to a new page. For example, maybe you want to reward the page for a user interacting with a button that runs some javascript code. To reward the page without redirecting the user to another page, you can use the rewardAction('rewardType') javascript function. This function is implemented in asyncReward.js, and sends an XmlHttpRequest to the Rewarder servlet. All you need to fill in here is the 'rewardType' parameter, which will be used by the rewarder servlet to determine how much to reward the page for this action. 
+
+
+
