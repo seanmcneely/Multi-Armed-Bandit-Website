@@ -46,3 +46,9 @@ Bandit has two member variables that control its behavior. The member "greedy" i
 
 That's it! You are now ready to come up with actions you want to reward, add their reward values and redirect strings to the Rewards class, add these actions to your webpages, and map Bandit to your web application's root. 
 
+## Implementation Details and Considerations:
+This framework has its advantages and disadvantages. For one, it does not parse any access log files or record actions to a database. This makes it very simple and entirely free to use on AWS with Elastic Beanstalk on a Tomcat server. This is nice for my usecase, where I want to explore the MAB algorithms and observe which versions of my websites are most effective. However, it is not so good if you want to capture clickstream data for later use. Additionally, since there is no persistent storage, everything is reset when the server is restarted, essentially losing your progress. Also, there is currently a potential for lost updates and other race conditions when retrieving and updating reward and site version performances. Since lost updates are not very consequential in this case, I decided to leave it as is rather than trying to synchronize or add locks to servlet methods, which would be bad. 
+
+To perform MAB testing in a real business scenario, you would almost certainly want to store data and learning progress persistently. You could do this by hosting a database to store reward actions and a server to periodically use this data to update website version scores. To write to the database, you could expose some API to record reward that you might call with some javascript on your webpage. However, my framework allows you to play with MAB entirely for free, without having to host a database, host a server beyond Tomcat, or write any API's or javascript libraries. 
+
+Thanks for reading! :) 
